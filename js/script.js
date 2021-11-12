@@ -5,11 +5,9 @@ listItemArray[3].innerHTML = listItemArray[3].innerHTML + " " + displayThirdBook
 let authorName = document.querySelector("#authorName");
 authorName.innerHTML = displayAuthor(0);
 let tableGot = document.querySelector("#GOT");
+tableGot.innerHTML = displayTable();
 
 
-
-
-tableGot.innerHTML = showData();
 
 //Write your function declarations below this line
 //example of a function getting and returning the book titles from the XML "text"
@@ -34,7 +32,7 @@ function displayAuthor(n){
     return x[n].childNodes[0].nodeValue;
 }
 function displayTable(){
-    let tableText = "<table class='GOT'><tr><td class='GOT'>Author</td><td class='GOT'>Title</td><td class='GOT'>Year</td></tr>"
+    let tableText = "<tr><td class='GOT'>Author</td><td class='GOT'>Title</td><td class='GOT'>Year</td></tr>"
     let parser = new DOMParser();
     let xmlDoc = parser.parseFromString(text, "text/xml");
     let x = xmlDoc.getElementsByTagName("author");
@@ -47,8 +45,6 @@ function displayTable(){
             tableText += "<td class='GOT'>" + y[i].childNodes[0].nodeValue + "</td>";
             tableText += "<td class='GOT'>" + z[i].childNodes[0].nodeValue + "</td></tr>";
     }
-
-    tableText += "</table>";
     return tableText;
 }
 
@@ -64,7 +60,7 @@ function readXML(){
 }
 
 function showData(xml){
-    let table = "<table class='GOT'><tr><td class='GOT'>Author</td><td class='GOT'>Title</td><td class='GOT'>Year</td></tr>";
+    let table = "<tr><td class='GOT'>Author</td><td class='GOT'>Title</td><td class='GOT'>Year</td></tr>";
     let xmlDoc = xml.responseXML;
     let x = xmlDoc.getElementsByTagName("author");
     let y = xmlDoc.getElementsByTagName("title");
@@ -76,6 +72,5 @@ function showData(xml){
         table += "<td class='GOT'>" + y[i].childNodes[0].nodeValue + "</td>";
         table += "<td class='GOT'>" + z[i].childNodes[0].nodeValue + "</td></tr>";
     }
-    table += "</table>";
-    return table;
+    document.querySelector("#HP").innerHTML = table;
 }
