@@ -6,6 +6,8 @@ let authorName = document.querySelector("#authorName");
 authorName.innerHTML = displayAuthor(0);
 let tableGot = document.querySelector("#GOT");
 tableGot.innerHTML = displayTable();
+let tableHP = document.querySelector("#HP");
+tableHP.innerHTML = readXML();
 
 
 
@@ -72,5 +74,5 @@ function showData(xml){
         table += "<td class='GOT'>" + y[i].childNodes[0].nodeValue + "</td>";
         table += "<td class='GOT'>" + z[i].childNodes[0].nodeValue + "</td></tr>";
     }
-    document.querySelector("#HP").innerHTML = table;
+    return table;
 }
