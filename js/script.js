@@ -9,7 +9,7 @@ let tableGot = document.querySelector("#GOT");
 
 
 
-tableGot.innerHTML = displayTable();
+tableGot.innerHTML = showData();
 
 //Write your function declarations below this line
 //example of a function getting and returning the book titles from the XML "text"
@@ -50,4 +50,32 @@ function displayTable(){
 
     tableText += "</table>";
     return tableText;
+}
+
+function readXML(){
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function (){
+        if (this.readyState == 4 && this.status == 200){
+            showData(this);
+        }
+    };
+    xhttp.open("GET","../myList.xml");
+    xhttp.send();
+}
+
+function showData(xml){
+    let table = "<table class='GOT'><tr><td class='GOT'>Author</td><td class='GOT'>Title</td><td class='GOT'>Year</td></tr>";
+    let xmlDoc = xml.responseXML;
+    let x = xmlDoc.getElementsByTagName("author");
+    let y = xmlDoc.getElementsByTagName("title");
+    let z = xmlDoc.getElementsByTagName("year");
+
+    for (let i = 0; i < x.length; i++) {
+
+        table += "<tr><td class='GOT'>" + x[i].childNodes[0].nodeValue + "</td>";
+        table += "<td class='GOT'>" + y[i].childNodes[0].nodeValue + "</td>";
+        table += "<td class='GOT'>" + z[i].childNodes[0].nodeValue + "</td></tr>";
+    }
+    table += "</table>";
+    return table;
 }
