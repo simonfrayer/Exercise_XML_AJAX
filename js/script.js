@@ -8,6 +8,8 @@ let tableGot = document.querySelector("#GOT");
 tableGot.innerHTML = displayTable();
 let tableHP = document.querySelector("#HP");
 readXML();
+let happy = document.querySelector("#happy");
+myLists();
 
 //Write your function declarations below this line
 //example of a function getting and returning the book titles from the XML "text"
@@ -74,6 +76,36 @@ function readXML() {
         }
     }
     xhttp.open("get", "myList.xml", true);
+    xhttp.send();
+}
+
+function lengthData(xml){
+    let table = "<tr><td>Like</td><td>Wish</td><td>Learn</td></tr>";
+    let xmlDoc = xml.responseXML;
+    let x = xmlDoc.getElementsByTagName("LikeItem");
+    let y = xmlDoc.getElementsByTagName("WishItem");
+    let z = xmlDoc.getElementsByTagName("LearnItem");
+
+    for (let i = 0; i < x.length; i++) {
+
+        table += "<tr><td>" + x[i].childNodes[0].nodeValue + "</td>";
+        table += "<td>" + y[i].childNodes[0].nodeValue + "</td>";
+        table += "<td>" + z[i].childNodes[0].nodeValue + "</td></tr>";
+    }
+    return table;
+}
+
+function myLists() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            happy.innerHTML =  lengthData(xhttp);
+        }
+        else{
+            happy.innerHTML = "Error";
+        }
+    }
+    xhttp.open("get", "list.xml", true);
     xhttp.send();
 }
 

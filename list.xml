@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LifeLists>
+    <LikeList>
+    <LikeItem>Music</LikeItem>
+    <LikeItem>Milk and episode of good series</LikeItem>
+    <LikeItem>Sports</LikeItem>
+    </LikeList>
+    <WishList>
+        <WishItem>Mountains</WishItem>
+        <WishItem>Skies</WishItem>
+        <WishItem>Wooden cottage</WishItem>
+    </WishList>
+    <LearnList>
+        <LearnItem>Back flip on skies</LearnItem>
+        <LearnItem>Back country skiing</LearnItem>
+        <LearnItem>Producing beats</LearnItem>
+    </LearnList>
+
+</LifeLists>
