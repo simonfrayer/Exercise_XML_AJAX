@@ -9,7 +9,7 @@ tableGot.innerHTML = displayTable();
 let tableHP = document.querySelector("#HP");
 readXML();
 let happy = document.querySelector("#happy");
-myLists();
+happyFunction();
 
 //Write your function declarations below this line
 //example of a function getting and returning the book titles from the XML "text"
@@ -82,9 +82,9 @@ function readXML() {
 function lengthData(xml){
     let table = "<tr><td>Like</td><td>Wish</td><td>Learn</td></tr>";
     let xmlDoc = xml.responseXML;
-    let x = xmlDoc.getElementsByTagName("LikeItem");
-    let y = xmlDoc.getElementsByTagName("WishItem");
-    let z = xmlDoc.getElementsByTagName("LearnItem");
+    let x = xmlDoc.getElementsByTagName("LikeList");
+    let y = xmlDoc.getElementsByTagName("WishList");
+    let z = xmlDoc.getElementsByTagName("LearnList");
 
     for (let i = 0; i < x.length; i++) {
 
@@ -95,9 +95,10 @@ function lengthData(xml){
     return table;
 }
 
-function myLists() {
+function happyFunction() {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
+
         if (xhttp.readyState === 4 && xhttp.status === 200) {
             happy.innerHTML =  lengthData(xhttp);
         }
