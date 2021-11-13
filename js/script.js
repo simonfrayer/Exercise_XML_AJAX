@@ -7,8 +7,7 @@ authorName.innerHTML = displayAuthor(0);
 let tableGot = document.querySelector("#GOT");
 tableGot.innerHTML = displayTable();
 let tableHP = document.querySelector("#HP");
-
-tableHP.innerHTML = readXML();
+readXML();
 
 //Write your function declarations below this line
 //example of a function getting and returning the book titles from the XML "text"
@@ -68,7 +67,7 @@ function readXML() {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            return showData(xhttp);
+            tableHP.innerHTML =  showData(xhttp);
         }
     }
     xhttp.open("get", "myList.xml", true);
