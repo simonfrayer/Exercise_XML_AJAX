@@ -7,9 +7,8 @@ authorName.innerHTML = displayAuthor(0);
 let tableGot = document.querySelector("#GOT");
 tableGot.innerHTML = displayTable();
 let tableHP = document.querySelector("#HP");
+
 tableHP.innerHTML = readXML();
-
-
 
 //Write your function declarations below this line
 //example of a function getting and returning the book titles from the XML "text"
@@ -50,17 +49,6 @@ function displayTable(){
     return tableText;
 }
 
-function readXML(){
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function (){
-        if (this.readyState == 4 && this.status == 200){
-            showData(this);
-        }
-    };
-    xhttp.open("GET","../myList.xml");
-    xhttp.send();
-}
-
 function showData(xml){
     let table = "<tr><td class='GOT'>Author</td><td class='GOT'>Title</td><td class='GOT'>Year</td></tr>";
     let xmlDoc = xml.responseXML;
@@ -76,3 +64,14 @@ function showData(xml){
     }
     return table;
 }
+function readXML() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            return showData(xhttp);
+        }
+    }
+    xhttp.open("get", "myList.xml", true);
+    xhttp.send();
+}
+
