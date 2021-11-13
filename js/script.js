@@ -69,6 +69,9 @@ function readXML() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             tableHP.innerHTML =  showData(xhttp);
         }
+        else{
+            tableHP.innerHTML = "Error";
+        }
     }
     xhttp.open("get", "myList.xml", true);
     xhttp.send();
