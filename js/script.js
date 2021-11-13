@@ -66,7 +66,7 @@ function showData(xml){
 function readXML() {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
             tableHP.innerHTML =  showData(xhttp);
         }
         else{
